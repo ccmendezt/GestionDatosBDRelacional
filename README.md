@@ -1,5 +1,5 @@
 # GestionDatosBDRelacional
-Proyecto de gestión de datos de base de datos relacional proporcionada por ESRI hecho en NestJS utilizando TypeORM y PostgreSQL<br />
+Proyecto de gestión de datos de base de datos relacional proporcionada por ESRI hecho en **NestJS** utilizando **TypeORM** y **PostgreSQL**<br />
 __Realizado por:__ _Cristian Camilo Méndez Trujillo_
 ## Instrucciones de Ejecución
 1. Crear la base de datos en PostgreSQL
@@ -21,23 +21,31 @@ Ya teniendo claro lo anterior, haré un ejemplo de inserción, obtención, actua
 
 - **Para la inserción de una nueva empresa:**<br />
 Utilizamos el metodo Post y en el body pasamos el parametro name en formato JSON como se aprecia en la siguiente imagen:<br />
+![Creación de empresas](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/CreacionEnterprise.JPG)
 
 _Nota:_ Se crearon dos empresas. Una fue **Meta** y la otra fue **Amazon** con id's 1 y 2 respectivamente.
 
 - **Para obtener las empresa registradas en la base de datos:**<br />
 Utilizamos el método Get con la URL especificada en la siguiente imagen:<br />
+![Obtención de todas las empresas](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/ObtenerEmpresas.JPG)
 
 - **Para obtener una empresa específica por su id:**<br />
 Utilizamos el método Get con la URL especificada añadiendole un Slash seguido del id que queremos obtener:<br />
+![Obtención de una empresa por su id](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/ObtenerEmpresa.JPG)
 
 - **Para actualizar una empresa:**<br />
 Utilizamos el método Patch con la URL especificada añadiendole un Slash seguido del id que queremos obtener:<br />
+![Actualización de una empresa por su id](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/ActualizarEmpresa.JPG)
 
 - **Para eliminar una empresa:**<br />
 Utilizamos el método Delete con la URL especificada añadiendole un Slash seguido del id que queremos obtener:<br />
+![Eliminación de una empresa por su id](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/EliminarEmpresa1.JPG)
+Luego, si obtenemos todas las empresas de nuevo observaremos que ya no está en la base de datos:<br />
+![Obtención de todas las empresas después de eliminar una](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/EliminarEmpresa2.JPG)
 
 - **Caso de empresa no encontrada:**<br />
 Cuando intentamos buscar, actualizar o eliminar una empresa que no existe arroja el siguiente mensaje manejado por HttpException y HttpStatus:<br />
+![Error empresa no encontrada](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/EmpresaNoExistente.JPG)
 
 Por último, todas las rutas para hacer las peticiones son las siguientes: <br />
 - **Inicio**: http://localhost:3000/
