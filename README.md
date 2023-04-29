@@ -15,3 +15,5 @@ __Realizado por:__ _Cristian Camilo Méndez Trujillo_
 ### Notas Finales
 - Configurar correctamente las variables de entorno según sea su caso en el archivo .env que se encuentra en el directorio raiz. (Recuerde que se puede modificar el host, puerto, usuario, contraseña y nombre de base de datos).
 - La base de datos que utilicé tiene el nombre: _gestiondb_
+
+¡Gracias!
