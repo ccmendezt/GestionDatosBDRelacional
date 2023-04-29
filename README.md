@@ -58,5 +58,6 @@ Por último, todas las rutas para hacer las peticiones son las siguientes: <br /
 - Configurar correctamente las variables de entorno según sea su caso en el archivo .env que se encuentra en el directorio raiz. (Recuerde que se puede modificar el host, puerto, usuario, contraseña y nombre de base de datos).
 - La base de datos que utilicé tiene el nombre: _gestiondb_
 - El modelo relacional indicaba que las claves primarias para cada entidad son de tipo: _uuid_ pero decidí manejarlas como smallserial para mayor comodidad al momento de hacer las peticiones a la API Rest.
+- No alcancé a desplegar el proyecto por cuestiones de tiempo y algunos errores que me generaba al momento de intentarlo.
 
 ¡Gracias!
