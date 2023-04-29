@@ -8,7 +8,7 @@ __Realizado por:__ _Cristian Camilo Méndez Trujillo_
 4. Abrir una nueva terminal en la ruta del proyecto
 5. Ejectuar el comando **npm install** para instalar los paquetes y dependencias necesarias para ejecutar el proyecto
 6. Luego de instalar todos los paquetes, ejecutar el comando **npm run start:dev**
-7. ¡Listo! El proyecto ya estará desplegado y ahora solo falta abrir la dirección que indica la consola para ver el proyecto desplegado en el localhost.
+7. ¡Listo! El proyecto ya estará desplegado y ahora solo falta abrir la dirección que indica la consola para ver el proyecto desplegado en el puerto 3000 del localhost.
 8. Instalar un programa que permita hacer las peticiones a la API. Se recomienda instalar la extensión **ThunderClient** en VSCode aunque también se puede utilizar un programa de escritorio como **Postman**.
 
 ## Instrucciones de peticiones a la API
