@@ -47,6 +47,22 @@ Luego, si obtenemos todas las empresas de nuevo observaremos que ya no está en 
 Cuando intentamos buscar, actualizar o eliminar una empresa que no existe arroja el siguiente mensaje manejado por HttpException y HttpStatus:<br />
 ![Error empresa no encontrada](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/EmpresaNoExistente.JPG)
 
+- **Creación de proyecto con enterprise_id erróneo:**<br />
+- Cuando intentamos crear un proyecto relacionado a una empresa que no existe arroja el siguiente mensaje manejado por HttpException y HttpStatus:<br />
+![Error empresa no encontrada creacion proyecto](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/CrearProyectoEmpresaIncorrecta.JPG)
+
+- **Creación de proyecto con enterprise_id correcto:**<br />
+- Cuando intentamos crear un proyecto relacionado a una empresa existente obtenemos como salida:<br />
+![Creación proyecto exitoso](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/CrearProyecto.JPG)
+
+__Plus__: Un añadido que no se solicitó en la prueba técnica pero quise añadir fue que cuando se solicitara una empresa, un proyecto, un usuario o un userproject se mostrara la información completa de la llave foránea con la que se relaciona como se muestra en la siguiente imagen:
+
+**Obtener todos los proyectos:**<br />
+Cuando solicitamos todos los proyectos obtenemos como salida:<br />
+![Obtención de proyectos](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/ObtenerProyectos.JPG)
+
+_Acá se puede apreciar como al solicitar todos los proyectos, se aprecia que solo hay un proyecto asociado al enterprise_id 1, y nos muestra la información completa de la empresa con id 1_
+
 Por último, todas las rutas para hacer las peticiones son las siguientes: <br />
 - **Inicio**: http://localhost:3000/
 - **Enterprise**: http://localhost:3000/enterprise
@@ -57,8 +73,9 @@ Por último, todas las rutas para hacer las peticiones son las siguientes: <br /
 ### Notas Finales
 - Configurar correctamente las variables de entorno según sea su caso en el archivo .env que se encuentra en el directorio raiz. (Recuerde que se puede modificar el host, puerto, usuario, contraseña y nombre de base de datos).
 - La base de datos que utilicé tiene el nombre: _gestiondb_
+- No olvides activar el servicio de postgresql para que se pueda crear la bd.
 - El modelo relacional indicaba que las claves primarias para cada entidad son de tipo: _uuid_ pero decidí manejarlas como smallserial para mayor comodidad al momento de hacer las peticiones a la API Rest.
-- El modelo relacional indicaba que las llaves foráneas de las tablas podían ser nulas, por lo cual se puede ingresar un usuario o proyecto sin la necesidad de especificar un _enterprise_id_.
-- No alcancé a desplegar el proyecto por cuestiones de tiempo y algunos errores que me generaba al momento de intentarlo.
+- El modelo relacional indica que las llaves foráneas de las tablas podían ser nulas, pero con el propósito de hacerlo consistente, las llaves foráneas son obligatorias, es decir, se tiene que asociar un id de empresa existente a un proyecto que se va a crear y así mismo para la tabla _users_ y _userproject_.
+- No me fue posible desplegar el proyecto por cuestiones de tiempo.
 
 ¡Gracias!
