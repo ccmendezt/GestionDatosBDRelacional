@@ -48,16 +48,14 @@ Cuando intentamos buscar, actualizar o eliminar una empresa que no existe arroja
 ![Error empresa no encontrada](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/EmpresaNoExistente.JPG)
 
 - **Creación de proyecto con enterprise_id erróneo:**<br />
-- Cuando intentamos crear un proyecto relacionado a una empresa que no existe arroja el siguiente mensaje manejado por HttpException y HttpStatus:<br />
+Cuando intentamos crear un proyecto relacionado a una empresa que no existe arroja el siguiente mensaje manejado por HttpException y HttpStatus:<br />
 ![Error empresa no encontrada creacion proyecto](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/CrearProyectoEmpresaIncorrecta.JPG)
 
 - **Creación de proyecto con enterprise_id correcto:**<br />
-- Cuando intentamos crear un proyecto relacionado a una empresa existente obtenemos como salida:<br />
+Cuando intentamos crear un proyecto relacionado a una empresa existente obtenemos como salida:<br />
 ![Creación proyecto exitoso](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/CrearProyecto.JPG)
 
 __Plus__: Un añadido que no se solicitó en la prueba técnica pero quise añadir fue que cuando se solicitara una empresa, un proyecto, un usuario o un userproject se mostrara la información completa de la llave foránea con la que se relaciona como se muestra en la siguiente imagen:
-
-**Obtener todos los proyectos:**<br />
 Cuando solicitamos todos los proyectos obtenemos como salida:<br />
 ![Obtención de proyectos](https://github.com/ccmendezt/GestionDatosBDRelacional/blob/master/assets/ObtenerProyectos.JPG)
 
