@@ -16,26 +16,27 @@ export class UserprojectService {
     ){}
 
     async createUserProject(userProject: CreateUserProjectDto){
-        const projectFound = await this.projectService.getProject(userProject.project_id)
-        const userFound = await this.userService.getUser(userProject.user_id)
+        const projectFound = await this.projectService.getProject(userProject.project_id).then((res) => {return res})
+        const userFound = await this.userService.getUser(userProject.user_id).then((res) => {return res})
 
-        if(projectFound && userFound){
-            const newUserProject = this.userProjectRepository.create(userProject)
-            return this.userProjectRepository.save(newUserProject)
-        }else{
+        if(projectFound instanceof HttpException || userFound instanceof HttpException)
             return new HttpException('Project or User not found', HttpStatus.NOT_FOUND)
-        }
+        const newUserProject = this.userProjectRepository.create(userProject)
+        return this.userProjectRepository.save(newUserProject)
     }
 
     getUserProjects(){
-        return this.userProjectRepository.find()
+        return this.userProjectRepository.find({
+            relations: ['project', 'user']
+        })
     }
 
     async getUserProject(id: number){
         const userProjectFound = await this.userProjectRepository.findOne({
             where: {
                 id: id
-            }
+            },
+            relations: ['project', 'user']
         })
         if(!userProjectFound){
             return new HttpException('UserProject not found', HttpStatus.NOT_FOUND)

@@ -15,25 +15,25 @@ export class ProjectService {
   ) { }
 
   async createProject(project: CreateProjectDto) {
-    const enterpriseFound = await this.enterpriseService.getEnterprise(project.enterprise_id)
-
-    if (enterpriseFound) {
-      const newProject = this.projectRepository.create(project)
-      return this.projectRepository.save(newProject)
-    }else{
+    const enterpriseFound = await this.enterpriseService.getEnterprise(project.enterprise_id).then((res) => {return res})
+    if (enterpriseFound instanceof HttpException)
       return new HttpException('Enterprise not found', HttpStatus.NOT_FOUND)
-    }
+    const newProject = this.projectRepository.create(project)
+    return this.projectRepository.save(newProject)
   }
 
   getProjects() {
-    return this.projectRepository.find()
+    return this.projectRepository.find({
+      relations: ['enterprise']
+    })
   }
 
   async getProject(id: number) {
     const projectFound = await this.projectRepository.findOne({
       where: {
         id: id
-      }
+      },
+      relations: ['enterprise']
     })
     if (!projectFound) {
       return new HttpException('Project not found', HttpStatus.NOT_FOUND)

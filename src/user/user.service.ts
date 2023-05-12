@@ -13,8 +13,8 @@ export class UserService {
   ) { }
 
   async createUser(user: CreateUserDto) {
-    const enterpriseFound = await this.enterpriseService.getEnterprise(user.enterprise_id)
-    if (!enterpriseFound) {
+    const enterpriseFound = await this.enterpriseService.getEnterprise(user.enterprise_id).then((res) => {return res})
+    if (enterpriseFound instanceof HttpException) {
       return new HttpException('Enterprise not found', HttpStatus.NOT_FOUND)
     }
     const newUser = this.userRepository.create(user)
@@ -22,14 +22,17 @@ export class UserService {
   }
 
   getUsers() {
-    return this.userRepository.find()
+    return this.userRepository.find({
+      relations: ['enterprise']
+    })
   }
 
   async getUser(id: number) {
     const userFound = await this.userRepository.findOne({
       where: {
         id: id
-      }
+      },
+      relations: ['enterprise']
     })
     if (!userFound) {
       return new HttpException('User not found', HttpStatus.NOT_FOUND)

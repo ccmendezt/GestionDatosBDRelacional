@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 import { Enterprise } from "src/enterprise/enterprise.entity";
 import { UserProject } from "src/userproject/userproject.entity";
 
@@ -25,10 +25,14 @@ export class User {
   @Column({ nullable: true, type: 'smallint' })
   project_id: number
 
-  @Column({ nullable: true, type: 'smallint' })
+  @Column({ type: 'smallint' })
   enterprise_id: number
 
-  @OneToMany(() => UserProject, userProject => userProject.user_id)
+  @ManyToOne(() => Enterprise, (enterprise) => enterprise.users)
+  @JoinColumn({ name: 'enterprise_id' })
+  enterprise: Enterprise
+
+  @OneToMany(() => UserProject, (userProject) => userProject.user_id)
   userProjects: UserProject[]
 
 }

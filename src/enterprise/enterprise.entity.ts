@@ -1,6 +1,6 @@
 import { Project } from 'src/project/project.entity';
 import { User } from 'src/user/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 
 @Entity({name: 'enterprise'}) //localhost:3000/enterprise
 export class Enterprise {
@@ -16,9 +16,10 @@ export class Enterprise {
     @Column({nullable: true, type: 'timestamp without time zone', default: () => 'CURRENT_TIMESTAMP'})
     updated_at: Date
 
-    @OneToMany(() => Project, (project) => project.enterprise_id)
+    @OneToMany(() => Project, (project) => project.enterprise)
+    @JoinColumn({name: 'projectId'})
     projects: Project[]
 
-    @OneToMany(() => User, (user) => user.enterprise_id)
+    @OneToMany(() => User, (user) => user.enterprise)
     users: User[]
 }

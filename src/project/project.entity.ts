@@ -1,7 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn} from "typeorm";
 import { Enterprise } from "src/enterprise/enterprise.entity";
 import { UserProject } from "src/userproject/userproject.entity";
-import { User } from "src/user/user.entity";
 
 @Entity({name: 'project'})
 export class Project{
@@ -29,10 +28,14 @@ export class Project{
     @Column({nullable: true, type: 'varchar', length: 50})
     state: string
 
-    @Column({nullable: true, type: 'smallint'})
+    @Column({type: 'smallint'})
     enterprise_id: number
 
-    @OneToMany(() => UserProject, userProject => userProject.project_id)
+    @ManyToOne(() => Enterprise, (enterprise) => enterprise.projects)
+    @JoinColumn({name: 'enterprise_id'})
+    enterprise: Enterprise
+
+    @OneToMany(() => UserProject, (userProject) => userProject.project_id)
     userProjects: UserProject[]
     
 }

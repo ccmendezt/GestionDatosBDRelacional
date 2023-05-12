@@ -6,5 +6,5 @@ export class CreateProjectDto {
     created_at?: Date
     updated_at?: Date
     state?: string
-    enterprise_id?: number
+    enterprise_id: number
 }

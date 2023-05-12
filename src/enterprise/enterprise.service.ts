@@ -15,20 +15,22 @@ export class EnterpriseService {
     return this.enterpriseRepository.save(newEnterprise)
   }
 
-  getEnterprises() {
-    return this.enterpriseRepository.find()
+  async getEnterprises() {
+    return await this.enterpriseRepository.find({
+      relations: ['projects'],
+    })
   }
 
   async getEnterprise(id: number) {
     const enterpriseFound = await this.enterpriseRepository.findOne({
       where: {
         id: id
-      }
+      },
+      relations: ['projects'],
     })
     if (!enterpriseFound) {
       return new HttpException('Enterprise no encontrada', HttpStatus.NOT_FOUND)
     }
-
     return enterpriseFound
   }
 
